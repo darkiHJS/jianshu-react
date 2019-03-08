@@ -1,14 +1,22 @@
 import React, { Component } from 'react'
 import {
-  HeaderWrapper,
-  Logo
+  HeaderNavber,
+  WidthLimit,
+  Container,
+  Logo,
+  Nav
 } from './style'
 class Header extends Component {
   render() {
     return (
-      <HeaderWrapper>
-        <Logo />
-      </HeaderWrapper>
+      <HeaderNavber>
+        <WidthLimit>
+          <Logo />
+          <Container>
+            <Nav></Nav>
+          </Container>
+        </WidthLimit>
+      </HeaderNavber>
     )
   }
 }
