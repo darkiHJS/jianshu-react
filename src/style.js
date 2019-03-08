@@ -27,6 +27,7 @@ export const GlobalStyle = createGlobalStyle`
   display: block;
   }
   body {
+  margin: 0;
   line-height: 1;
   }
   ol, ul {
