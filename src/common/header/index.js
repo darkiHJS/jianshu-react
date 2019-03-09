@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { connect } from 'react-redux'
 import {
   HeaderNavber,
   WidthLimit,
@@ -7,8 +8,8 @@ import {
   Nav,
   Addition
 } from './style'
-class Header extends Component {
-  render() {
+
+const Header = (props) => {
     return (
       <HeaderNavber>
         <WidthLimit>
@@ -25,10 +26,15 @@ class Header extends Component {
                   <span><i className="iconfont tab-ic">&#xe72f;</i>下载App</span>
                 </a>
               </li>
-              <li className="tab search">
-                <input className="search-input" placeholder="搜索"/>
-                <button className="search-btn"><i className="iconfont tab-ic">&#xe6e4;</i></button>
-              </li>
+                <li className="tab search">
+                  <input
+                    className={props.focused?"search-input focused":"search-input"}
+                    placeholder="搜索"
+                    onFocus={props.handleInputFocus}
+                    onBlur={props.handleInputBlur}
+                  />
+                  <button className={props.focused?"search-btn focused":"search-btn"}><i className="iconfont tab-ic">&#xe6e4;</i></button>
+                </li>
             </Nav>
           </Container>
           <Addition>
@@ -43,7 +49,29 @@ class Header extends Component {
         </WidthLimit>
       </HeaderNavber>
     )
+}
+
+const mapStateToProps = (state) => {
+  return {
+   focused: state.header.focused
   }
 }
 
-export default Header
+const mapDispathToProps = (dispatch) => {
+  return {
+    handleInputFocus() {
+      const action = {
+        type: 'search_focus'
+      }
+      dispatch(action)
+    },
+    handleInputBlur() {
+      const action = {
+        type: 'search_blur'
+      }
+      dispatch(action)
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispathToProps)(Header)

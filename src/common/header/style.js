@@ -37,8 +37,8 @@ export const Nav = styled.ul`
   line-height: 55px;
   margin: 0 auto;
   .tab-ic{
-        margin-right: 5px;
-        font-size: 24px;
+    margin-right: 5px;
+    font-size: 24px;
   }
   .tab{
     float: left;
@@ -62,9 +62,17 @@ export const Nav = styled.ul`
         width: 160px;
         height: 38px;
         padding: 0 50px 0 20px;
+        color: #666;
         border: 1px solid #eee;
         border-radius: 40px;
         outline: none;
+        transition: all .2s ease-out;
+        &::placeholder{
+          color: #999;
+        }
+        &.focused{
+          width: 240px;
+        }
       }
       .search-btn{
         position: absolute;
@@ -72,13 +80,22 @@ export const Nav = styled.ul`
         transform: translateY(-50%);
         border: none;
         background: transparent;
-        right: 8px;
+        right: 5px;
         width: 30px;
         height: 30px;
+        border-radius: 30px;
         line-height: normal;
         padding: 0;
         color: #969696;
         text-align: center;
+        transition: all .2s ease-out;
+        .tab-ic{
+          padding-left: 3px;
+        }
+        &.focused{
+          background: #aaa;
+          color: #fff;
+        }
       }
     }
   }
@@ -89,7 +106,7 @@ export const Addition = styled.div`
   top: 0;
   .tab-ic{
     margin-right: 5px;
-    font-size: 15px;
+    font-size: 15ypx;
   }
   .addition-item{
     float: right;
